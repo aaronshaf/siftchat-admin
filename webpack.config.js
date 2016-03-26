@@ -62,8 +62,6 @@ module.exports = {
     template: './client/templates/index.html',
     inject: true
   }), new webpack.DefinePlugin({
-    'process.env': {
-      API_HOST: process.env.API_HOST
-    }
+    'process.env.API_HOST': JSON.stringify(process.env.API_HOST)
   })]
 }
