@@ -1,0 +1,2 @@
+web: node index.js
+client: ./node_modules/.bin/webpack --watch
