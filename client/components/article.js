@@ -10,7 +10,7 @@ export default React.createClass({
   },
 
   render () {
-    const isLoading = this.props.article.isLoading
+    const isLoading = this.props.site.isLoading || this.props.article.isLoading
     const article = this.props.article.data
 
     return (
