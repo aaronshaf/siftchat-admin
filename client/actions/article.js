@@ -1,26 +1,30 @@
 import {
-  FIND_ARTICLE,
-  FIND_ARTICLE_SUCCESS
+  GET_ARTICLE_PENDING,
+  GET_ARTICLE_SUCCESS,
+  GET_ARTICLE_ERROR
 } from '../constants/action-types'
 import { dispatch } from '../store'
 
-export function findArticleByAlias (alias = 'main-page') {
+export function getArticleById (articleId) {
   dispatch({
-    type: FIND_ARTICLE,
-    alias
+    type: GET_ARTICLE_PENDING
   })
-  
-  fetch(`${process.env.API_HOST}/articles-by-alias/${alias}`).then(async function (response) {
+
+  fetch(`${process.env.API_HOST}/articles/${articleId}`).then(async function (response) {
     if (response.ok) {
       const json = await response.json()
       dispatch({
-        type: FIND_ARTICLE_SUCCESS,
+        type: GET_ARTICLE_SUCCESS,
         response: json
       })
     } else {
-      // destroySession(sessionId)
+      throw new Error(response)
     }
-  }).catch(function (err) {
-    console.log('parsing failed', err)
+  }).catch(function (error) {
+    console.log('parsing failed', error)
+    dispatch({
+      type: GET_ARTICLE_ERROR,
+      error
+    })
   })
 }

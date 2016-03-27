@@ -19,7 +19,6 @@ export function listArticles (siteId) {
       })
     } else {
       throw new Error(response)
-      // destroySession(sessionId)
     }
   }).catch(function (error) {
     console.log('parsing failed', error)

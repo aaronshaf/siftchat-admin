@@ -1,8 +1,9 @@
 /* @flow */
 
 // article
-export const FIND_ARTICLE = 'FIND_ARTICLE'
-export const FIND_ARTICLE_SUCCESS = 'FIND_ARTICLE_SUCCESS'
+export const GET_ARTICLE_PENDING = 'GET_ARTICLE_PENDING'
+export const GET_ARTICLE_SUCCESS = 'GET_ARTICLE_SUCCESS'
+export const GET_ARTICLE_ERROR = 'GET_ARTICLE_ERROR'
 
 // session
 export const SET_USER_TOKEN = 'SET_USER_TOKEN'

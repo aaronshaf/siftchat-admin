@@ -11,8 +11,6 @@ export function getSite (id) {
   })
 
   fetch(`${process.env.API_HOST}/sites/${id}`, {
-    mode: 'cors',
-    // mode: 'no-cors',
     headers: {
       'Authorization': 'Bearer ' + getState().session.userToken
     }

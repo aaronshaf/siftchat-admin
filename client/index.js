@@ -14,10 +14,12 @@ import {
 import frontPageRoute from './routes/front-page'
 import siteRoute from './routes/site'
 import articlesRoute from './routes/articles'
+import articleRoute from './routes/article'
 
 let router = Router()
   .get('/', ensureLogin, frontPageRoute)
   .get('/sites/:siteId', ensureLogin, siteRoute)
+  .get('/sites/:siteId/articles/:articleId', ensureLogin, articleRoute)
   .get('/sites/:siteId/articles', ensureLogin, articlesRoute)
   .get('/login', login)
   .get('/logout', logout)

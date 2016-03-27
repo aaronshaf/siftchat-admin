@@ -10,22 +10,23 @@ export default React.createClass({
   },
 
   render () {
-    const isLoading = this.props.articles.isLoading
+    const isLoading = this.props.articles.isLoading || this.props.site.isLoading
     const articles = this.props.articles.data
+    const site = this.props.site.data
 
     let articlesComponent
     if (articles.length) {
-      const siteRows = articles.map((site) => {
+      const siteRows = articles.map((article) => {
         return (
-          <tr key={site.id}>
+          <tr key={article.id}>
             <td className='mdl-data-table__cell--non-numeric'>
-              <a href={`/articles/${site.id}`}>{site.title}</a>
+              <a href={`/sites/${site.id}/articles/${article.id}`}>{article.title}</a>
             </td>
             <td className='mdl-data-table__cell--non-numeric'>
-              {site.path}
+              {article.path}
             </td>
             <td className='mdl-data-table__cell--non-numeric'>
-              {site.lastActivityAt}
+              {article.lastActivityAt}
             </td>
           </tr>
         )
@@ -41,22 +42,7 @@ export default React.createClass({
 
     return (
       <div>
-        <form method='post'>
-          <main className='main'>
-            <section className='asides-primary'>
-              <aside className='aside fixed'>
-
-              </aside>
-            </section>
-            <section className='asides-secondary'>
-              <div id='wysiwyg-toolbar'></div>
-              <div id='article-proposal-callout'></div>
-            </section>
-            <article className='article'>
-              {articlesComponent}
-            </article>
-          </main>
-        </form>
+        {articlesComponent}
         {
           isLoading &&
           <div
