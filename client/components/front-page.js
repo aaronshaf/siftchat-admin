@@ -3,19 +3,17 @@ import React from 'react'
 export default React.createClass({
   displayName: 'FrontPage',
 
+  componentDidMount () {
+    window.componentHandler &&
+      this.refs.progress &&
+      window.componentHandler.upgradeElement(this.refs.progress)
+  },
+
   render () {
     const isLoading = this.props.sites.isLoading
     const sites = this.props.sites.data
 
     let sitesComponent
-    if (isLoading) {
-      sitesComponent = (
-        <div
-          className='mdl-progress mdl-js-progress mdl-progress__indeterminate'
-          id='p2'
-        ></div>
-      )
-    }
     if (sites.length) {
       const siteRows = sites.map((site) => {
         return (
@@ -52,11 +50,19 @@ export default React.createClass({
               <div id='article-proposal-callout'></div>
             </section>
             <article className='article'>
-              <h1>Sites</h1>
               {sitesComponent}
             </article>
           </main>
         </form>
+        {
+          isLoading &&
+          <div
+            className='mdl-progress mdl-js-progress mdl-progress__indeterminate'
+            id='p2'
+            ref='progress'
+            style={{bottom: 0, position: 'fixed', width: '100%'}}
+          ></div>
+        }
       </div>
     )
   }

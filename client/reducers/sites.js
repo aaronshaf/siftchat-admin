@@ -19,8 +19,7 @@ export default function article (state = initialState, action) {
         ...state,
         wasSuccessful: false,
         isLoading: true,
-        error: null,
-        data: []
+        error: null
       }
     case LIST_SITES_SUCCESS:
       return {

@@ -36,7 +36,7 @@ export default React.createClass({
           </nav>
         </div>
         <main className='mdl-layout__content'>
-          <div className='page-content'>
+          <div className='page-content' style={{padding: 16}}>
             {this.props.children}
           </div>
         </main>
