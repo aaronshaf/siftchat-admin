@@ -19,7 +19,7 @@ export default React.createClass({
         return (
           <tr key={site.id}>
             <td className='mdl-data-table__cell--non-numeric'>
-              <a href={`/sites/${site.id}`}>{site.title}</a>
+              <a href={`/sites/${site.path}`}>{site.title}</a>
             </td>
             <td className='mdl-data-table__cell--non-numeric'>
               {site.tagline}

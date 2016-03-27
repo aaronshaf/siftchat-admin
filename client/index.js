@@ -18,9 +18,9 @@ import articleRoute from './routes/article'
 
 let router = Router()
   .get('/', ensureLogin, frontPageRoute)
-  .get('/sites/:siteId', ensureLogin, siteRoute)
-  .get('/sites/:siteId/articles/:articleId', ensureLogin, articleRoute)
-  .get('/sites/:siteId/articles', ensureLogin, articlesRoute)
+  .get('/sites/:sitePath', ensureLogin, siteRoute)
+  .get('/sites/:sitePath/articles/:articlePath', ensureLogin, articleRoute)
+  .get('/sites/:sitePath/articles', ensureLogin, articlesRoute)
   .get('/login', login)
   .get('/logout', logout)
 

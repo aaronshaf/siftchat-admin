@@ -28,7 +28,7 @@ export default function article (state = initialState, action) {
         wasSuccessful: true,
         isLoading: false,
         error: null,
-        data: action.response.data
+        data: action.response.data && action.response.data[0]
       }
 
     case GET_ARTICLE_ERROR:

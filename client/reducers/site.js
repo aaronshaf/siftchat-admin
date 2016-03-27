@@ -25,7 +25,7 @@ export default function article (state = initialState, action) {
     case GET_SITE_SUCCESS:
       return {
         ...state,
-        data: action.response.data,
+        data: action.response.data && action.response.data[0],
         wasSuccessful: true,
         isLoading: false,
         error: null

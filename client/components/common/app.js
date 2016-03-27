@@ -8,6 +8,7 @@ export default React.createClass({
   },
 
   render () {
+    const siteId = this.props.site.data.id
     return (
       <div
         className='mdl-layout mdl-js-layout mdl-layout--fixed-header'
@@ -33,6 +34,10 @@ export default React.createClass({
           <span className='mdl-layout-title'>{this.props.title}</span>
           <nav className='mdl-navigation'>
             <a className='mdl-navigation__link' href='/'>Sites</a>
+            {
+              siteId &&
+              <a className='mdl-navigation__link' href={`/sites/${siteId}/articles`}>Articles</a>
+            }
           </nav>
         </div>
         <main className='mdl-layout__content'>

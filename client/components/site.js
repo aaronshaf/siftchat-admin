@@ -20,13 +20,13 @@ export default React.createClass({
         </h1>
         <ul>
           <li>
-            <a href={`/sites/${site.id}/articles`}>Articles</a>
+            <a href={`/sites/${site.path}/articles`}>Articles</a>
           </li>
           <li>
-            <a href={`/sites/${site.id}/asides`}>Asides</a>
+            <a href={`/sites/${site.path}/asides`}>Asides</a>
           </li>
           <li>
-            <a href={`/sites/${site.id}/aliases`}>Aliases</a>
+            <a href={`/sites/${site.path}/aliases`}>Aliases</a>
           </li>
         </ul>
         {

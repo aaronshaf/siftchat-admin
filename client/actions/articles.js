@@ -5,12 +5,12 @@ import {
 } from '../constants/action-types'
 import { dispatch } from '../store'
 
-export function listArticles (siteId) {
+export function listArticles (sitePath) {
   dispatch({
     type: LIST_ARTICLES_PENDING
   })
 
-  fetch(`${process.env.API_HOST}/articles?siteId=${siteId}`).then(async function (response) {
+  fetch(`${process.env.API_HOST}/articles?sitePath=${sitePath}`).then(async function (response) {
     if (response.ok) {
       const json = await response.json()
       dispatch({

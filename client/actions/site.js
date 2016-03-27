@@ -5,12 +5,12 @@ import {
 } from '../constants/action-types'
 import { getState, dispatch } from '../store'
 
-export function getSite (id) {
+export function getSiteByPath (path) {
   dispatch({
     type: GET_SITE_PENDING
   })
 
-  fetch(`${process.env.API_HOST}/sites/${id}`, {
+  fetch(`${process.env.API_HOST}/sites?path=${path}`, {
     headers: {
       'Authorization': 'Bearer ' + getState().session.userToken
     }
