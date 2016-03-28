@@ -14,7 +14,10 @@ function view () {
       title={title}
     >
       <Head title='Articles' />
-      <Articles {...getState()} />
+      <Articles
+        {...getState()}
+        listArticles={listArticles}
+      />
     </App>
   )
 }

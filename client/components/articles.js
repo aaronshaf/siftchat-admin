@@ -1,12 +1,14 @@
 import React from 'react'
+import { ProgressBar } from 'react-mdl'
 
 export default React.createClass({
   displayName: 'Articles',
 
-  componentDidMount () {
-    window.componentHandler &&
-      this.refs.progress &&
-      window.componentHandler.upgradeElement(this.refs.progress)
+  handleSearchInput (event) {
+    const listArticles = this.props.listArticles
+    const sitePath = this.props.site.data.path
+    const query = event.target.value
+    listArticles(sitePath, query)
   },
 
   render () {
@@ -42,15 +44,21 @@ export default React.createClass({
 
     return (
       <div>
+        <form action='#' ref='form'>
+          <div className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
+            <input
+              className='mdl-textfield__input'
+              id='sample3'
+              onInput={this.handleSearchInput}
+              type='text'
+            />
+            <label ref='input' className='mdl-textfield__label' htmlFor='sample3'>Search</label>
+          </div>
+        </form>
         {articlesComponent}
         {
           isLoading &&
-          <div
-            className='mdl-progress mdl-js-progress mdl-progress__indeterminate'
-            id='p2'
-            ref='progress'
-            style={{bottom: 0, position: 'fixed', width: '100%'}}
-          ></div>
+          <ProgressBar indeterminate />
         }
       </div>
     )

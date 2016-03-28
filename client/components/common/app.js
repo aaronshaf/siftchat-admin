@@ -3,10 +3,6 @@ import React from 'react'
 export default React.createClass({
   displayName: 'App',
 
-  componentDidMount () {
-    window.componentHandler && window.componentHandler.upgradeElement(this.refs.layout)
-  },
-
   render () {
     const siteId = this.props.site.data.id
     return (

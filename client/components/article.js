@@ -3,12 +3,6 @@ import React from 'react'
 export default React.createClass({
   displayName: 'Article',
 
-  componentDidMount () {
-    window.componentHandler &&
-      this.refs.progress &&
-      window.componentHandler.upgradeElement(this.refs.progress)
-  },
-
   render () {
     const isLoading = this.props.site.isLoading || this.props.article.isLoading
     const article = this.props.article.data

@@ -3,12 +3,6 @@ import React from 'react'
 export default React.createClass({
   displayName: 'FrontPage',
 
-  componentDidMount () {
-    window.componentHandler &&
-      this.refs.progress &&
-      window.componentHandler.upgradeElement(this.refs.progress)
-  },
-
   render () {
     const isLoading = this.props.sites.isLoading
     const sites = this.props.sites.data
