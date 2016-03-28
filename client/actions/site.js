@@ -6,6 +6,11 @@ import {
 import { getState, dispatch } from '../store'
 
 export function getSiteByPath (path) {
+  const isAlreadyLoaded = getState().site.data.path === path
+  if (isAlreadyLoaded) {
+    return
+  }
+
   dispatch({
     type: GET_SITE_PENDING
   })

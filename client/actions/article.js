@@ -3,9 +3,15 @@ import {
   GET_ARTICLE_SUCCESS,
   GET_ARTICLE_ERROR
 } from '../constants/action-types'
-import { dispatch } from '../store'
+import { dispatch, getState } from '../store'
 
 export function getArticleByPath (sitePath, articlePath) {
+  const isAlreadyLoaded = getState().article.data.path === articlePath &&
+    getState().article.data.sitePath === sitePath
+  if (isAlreadyLoaded) {
+    return
+  }
+
   dispatch({
     type: GET_ARTICLE_PENDING
   })
