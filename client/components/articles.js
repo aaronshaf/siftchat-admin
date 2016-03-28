@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgressBar } from 'react-mdl'
+import { ProgressBar, Textfield, FABButton, Icon } from 'react-mdl'
 
 export default React.createClass({
   displayName: 'Articles',
@@ -14,6 +14,7 @@ export default React.createClass({
   render () {
     const isLoading = this.props.articles.isLoading || this.props.site.isLoading
     const articles = this.props.articles.data
+    const sitePath = this.props.site.data.path
     const site = this.props.site.data
 
     let articlesComponent
@@ -44,22 +45,29 @@ export default React.createClass({
 
     return (
       <div>
-        <form action='#' ref='form'>
-          <div className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
-            <input
-              className='mdl-textfield__input'
-              id='sample3'
-              onInput={this.handleSearchInput}
-              type='text'
-            />
-            <label ref='input' className='mdl-textfield__label' htmlFor='sample3'>Search</label>
-          </div>
-        </form>
+        <Textfield
+          onChange={this.handleSearchInput}
+          label='Text...'
+          style={{width: '200px'}}
+        />
         {articlesComponent}
         {
           isLoading &&
-          <ProgressBar indeterminate />
+          <div
+            className='mdl-progress mdl-js-progress mdl-progress__indeterminate'
+            id='p2'
+            ref='progress'
+            style={{bottom: 0, position: 'fixed', width: '100%'}}
+          ></div>
         }
+        <FABButton
+          className='fixed-button-right'
+          colored
+          href={`/sites/${sitePath}/articles/add`}
+          ripple
+        >
+          <Icon name='add' />
+        </FABButton>
       </div>
     )
   }
